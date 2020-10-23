@@ -13,7 +13,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Ground
   - 
   - 
   - 
@@ -40,4 +40,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: plateforme
+    uniqueID: 616852401
+    locked: 0
+  - name: enviro/props
+    uniqueID: 2011584825
+    locked: 0
+  - name: Lune
+    uniqueID: 883761733
+    locked: 0
+  - name: fleche
+    uniqueID: 703488627
     locked: 0

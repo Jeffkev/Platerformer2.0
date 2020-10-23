@@ -40,7 +40,11 @@ public class PlayerBehaviour : MonoBehaviour
 
     private void JumpOnPerformed(InputAction.CallbackContext obj)
     {
-        myRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        if(isOnGround)
+        {
+         myRigidBody.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+            isOnGround = false;
+        }
     }
 
     private void OnMoveCanceled(InputAction.CallbackContext obj)
@@ -84,9 +88,13 @@ public class PlayerBehaviour : MonoBehaviour
         }
     }   
 
-      private void OnCollisionEnter(Collision other)
+      private void OnCollisionEnter2D(Collision2D other)
         {
-            if (other.gameObject.CompareTag("Ground") == true)
+
+            var touchGround = ground == (ground | (1 << other.gameObject.layer));
+            var touchFromAbove = other.contacts[0].normal == Vector2.up;
+            if  (touchGround && touchFromAbove) 
+            // if (other.gameObject.CompareTag("ground") == true)
             {
                 isOnGround = true;
             }
